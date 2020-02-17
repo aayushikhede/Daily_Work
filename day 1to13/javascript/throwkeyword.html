@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+ <input id="demo" type="text">
+ <button type="button" onclick="myFunction()"> test input </button>
+ <p id="p1"></p>
+ <p id="demo2"></p>
+ <script type="text/javascript">
+ 	function myFunction()
+ 	{
+ 		var message ,x;
+ 		var atmpt=0;
+        message = document.getElementById("p1");
+ 		x=document.getElementById("demo").value;
+ 		message.innerHTML="";
+ 		x=document.getElementById("demo").value;
+ 		try{
+ 			if(x=="") throw "empty";
+ 			if(isNaN(x))throw "not a number";
+
+ 			if (x<5) throw "too low";
+ 		    if (x>10) throw "too high";
+ 				 
+ 		}
+ 		catch(e)
+ 		{
+ 			message.innerHTML = "Input is" +error;
+
+ 		}
+ 		finally
+ 		{
+ 			document.getElementById("demo2").innerHTML="atmpted::";
+ 		}
+ 	}
+ </script>
+</body>
+</html>

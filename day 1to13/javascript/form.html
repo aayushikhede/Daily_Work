@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		function validateForm(){
+			var name = documet.my.nm.value;
+		    var mob = documet.my.mob.value;
+		    var pin = documet.my.pin.value;
+            var nmmsg = "document is required";
+            var mobmsg1 = "enter mobile no";
+            var mobmsg2= "only number are rq";
+            if (name==null || name=="") {
+            document.getElementById('ernm').innerHTML=nmmsg;
+            return false;
+            }
+            else if(mob.length!=10)
+            {
+            document.getElementById('ermob').innerHTML= mobmsg1;
+            return false;
+               
+		    }
+		    else if(isNaN(mob))
+            {
+            document.getElementById('ermob').innerHTML= mobmsg2;
+            return false;
+               
+		}
+		else{
+               document.my.submit();
+            }
+		}
+            function removemsg(ct id)
+            {
+                  document.getElementById(ct id).innerHTML= "";
+            }
+	</script>
+</head>
+<body>
+<form name="my" method="post" onsubmit="return validateForm()">
+name:<input type="text" name="nm" onfocus="removemsg('ermob')">
+<span id="ernob" style="color:red"></span><br>
+pincode:<input type="text" name="pin"><br>
+<input type="submit" value="save data"><br>
+</body>
+</html>

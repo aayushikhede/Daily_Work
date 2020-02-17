@@ -1,0 +1,39 @@
+<html>
+<body>
+	
+	
+
+<script>
+	var person ={firstName:"eli",lastName:"blake",id:23456,fullName:function(){
+		return this.firstName+" "+this.lastName;
+
+}
+	} ;
+document.write( person.fullName()) ;
+
+
+
+var fruits =["banana","orange","apple","mango"]; 
+//document.write(fruits);<br>
+
+/*function myFruits()
+{
+	fruits.push("lemon");
+	document.write(fruits.myFruits());
+    fruits.pop("apple");
+    document.write(fruits.myFruits());
+}*/
+
+document.getElementById("demo").innerHTML = fruits;
+
+function myFunction() {
+  fruits.pop();
+  document.getElementById("demo").innerHTML = fruits;
+}
+
+
+</script>
+<p>Click the button to remove the last element from the array.</p>
+	<p id=" demo">
+</body>
+</html>

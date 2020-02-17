@@ -1,0 +1,11 @@
+body{
+	background-color:linen;
+}
+h1{
+	color:blue;
+    background-color:lightblue; 
+}
+#para {
+	color:lightgreen;
+	align-self:center;
+}

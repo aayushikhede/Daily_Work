@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+<title> first program </title>
+<link rel="icon"  href="images/favicon1"/>
+<meta charset="utf-8">
+</head>
+<body>
+	<h1>fisrt form</h1>
+<form target="_self">
+	first name :
+	<input type=" text " name="first name"><br>
+	last name :
+	<input type="text" name= "last name "><br>
+	gender :
+	<input type="radio" name="gender" value="female">female<br>
+    <input type="radio" name="gender" value="male">male<br>
+    <input type="submit" value="insert">
+</form>
+
+<h1>second form</h1>
+<form target="_self">
+	<fieldset>
+		<legend>person information</legend>
+    first name :
+		<input type=" text " name="first name"><br>
+	last name :
+	<input type="text" name= "last name "><br>
+	<hr>
+	gender :
+	<input type="radio" name="gender" value="female">female<br>
+    <input type="radio" name="gender" value="male">male<br>
+    <hr>
+    hobbies:<br>
+    <input type="checkbox" name="hobby" values="sing">singing<br>
+    <input type="checkbox" name="hobby" values="run">running<br>
+    <input type="checkbox" name="hobby" values="read">reading<br>
+    <hr>
+    pasword:<br>
+    <input type="pasword" name="pwd"><br>
+    <hr>
+    city :<br>
+    <select name="city">
+     <option value="indore"> indore </option>   
+     <option value="pune"> pune </option>
+     <option value="bhopal"> bhopal </option>  <br>
+    </select><br>
+
+    <hr>
+    car :<br>
+    <select name="cars" size="2" >
+     <option value="car1"> car1 </option>  <br> 
+     <option value="car2"> car2 </option><br><br>
+     <option value="car3"> car3 </option>  <br>
+    </select><br>
+
+    <textarea name="adr" rows="5" cols="20"></textarea><br>
+    
+    color:<br>
+    <input type="color" ><br>
+    
+    date of birth:
+    <input type="data" > <br>
+   
+    enter a date before 1980-01-01:
+    <input type="date" name="bday" max="1979-12-31"><br>
+   
+    enter a date before 2000-01-01:
+    <input type="date" name="bday" max="2000-01-02"><br>
+   
+    quantity :
+    <input type="number" name="points" min="0" max="100" step="10" value="30"><br>
+     
+    email:
+    <input type="email" required multiple><br>
+    <label>your cars name</label>
+    <input list="cars" id="carsinput">
+    <datalist id="cars">
+    	<option value="BMW"/>
+    	<option value="AUDI"/>
+    	<option value="BENTLEY"/>
+    	<option value="VOLKSWAGEN"/>
+    </datalist><br>
+   <input type="submit" value="insert"><br>
+   <input type="reset" value="reset"><br>
+    <button type="button">submit</button>
+
+</fieldset>
+</form>	
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<html>
+<body>
+	<form> 
+      buttons:
+      <input type="button" id="first" value="ok" >
+
+      <input type="button" id="second" value="ok" >
+	</form>
+	<p> click the button below to disable the above button</p>
+
+<button style="color :red; background-color: blue" onClick = "disableElement()"> dissable button </button>
+<button style="color:blue ; background-color: red" onClick = "enableElement()"> enable button </button>
+
+<script>
+{
+	function disableElement()
+	{
+		document.getElementById("first").disabled=true;
+	}
+    
+	function enaableElement()
+	{
+		document.getElementById("first").disabled=true;
+	}
+
+}
+
+</script>
+</body>
+</html>

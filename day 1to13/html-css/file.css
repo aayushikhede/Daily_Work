@@ -1,0 +1,30 @@
+#html
+{ margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 20px;
+	margin-right: 20px;
+
+	background-color:lightblue;
+	text-align: center;
+    border-style:solid; 
+
+}
+p.css{
+	 margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 20px;
+	margin-right: 20px;
+	border-style: dotted;
+	background-color:red;
+	text-align: center;
+}
+
+h2.csss
+{   margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 20px;
+	margin-right: 20px;
+	border-style: double;
+	background-color:lightgreen;
+	text-align: center;
+}

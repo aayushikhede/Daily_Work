@@ -1,0 +1,222 @@
+
+mysql> use class1;
+Database changed
+mysql> create index idx_name on student(name);
+Query OK, 0 rows affected (0.42 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from student;
++-------+--------+--------+--------+-------+----------+
+| name  | rollno | branch | city   | id    | stdname  |
++-------+--------+--------+--------+-------+----------+
+| NULL  |   NULL | NULL   | NULL   |     1 | dfs      |
+| NULL  |   NULL | NULL   | NULL   |     2 | ggggdfgb |
+| ram   |      1 | cs     | indore |   123 | rm       |
+| rina  |      2 | ec     | pune   |  1234 | rna      |
+| riya  |      3 | me     | indore |  1245 | rya      |
+| ram   |      6 | cs     | indore |  1623 | rm       |
+| risha |      5 | ec     | pune   |  1234 | na       |
+| kriya |      4 | me     | indore | 12445 | ya       |
++-------+--------+--------+--------+-------+----------+
+8 rows in set (0.00 sec)
+
+mysql> create table customer(custid int pk,cname varchar(20),address varchar(20),city varchar(20),mobile int);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'pk,cname varchar(20),address varchar(20),city varchar(20),mobile int)' at line 1
+mysql> create table customer(custid int primary key,cname varchar(20),address varchar(20),city varchar(20),mobile int);
+Query OK, 0 rows affected (0.25 sec)
+
+mysql>  CREATE TABLE Orders (
+    ->     OrderID int NOT NULL,
+    ->     Orderdate date not null,
+    ->     custid int,
+    ->     PRIMARY KEY (OrderID),
+    ->     FOREIGN KEY (custid) REFERENCES customer(custid)
+    -> );
+Query OK, 0 rows affected (0.20 sec)
+
+mysql> create table product(pid int primary key , pname varchar(20),price int);
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> create table orderdetail(did int , pid int ,quantity int , price int ,OrderID int ,foreign key(pid) references product(pid), foreign key(OrderID) references Orders(orderID));
+Query OK, 0 rows affected (0.14 sec)
+
+mysql> describe customer;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| custid  | int         | NO   | PRI | NULL    |       |
+| cname   | varchar(20) | YES  |     | NULL    |       |
+| address | varchar(20) | YES  |     | NULL    |       |
+| city    | varchar(20) | YES  |     | NULL    |       |
+| mobile  | int         | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+5 rows in set (0.02 sec)
+
+mysql> insert into customer(custid,cname,address,city,mobile)values('1','ram','123 indore','indore','1234567890'),('2','riya','123pune','pune','1234567899');
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * customer;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'customer' at line 1
+mysql> select * from customer;
++--------+-------+------------+--------+------------+
+| custid | cname | address    | city   | mobile     |
++--------+-------+------------+--------+------------+
+|      1 | ram   | 123 indore | indore | 1234567890 |
+|      2 | riya  | 123pune    | pune   | 1234567899 |
++--------+-------+------------+--------+------------+
+2 rows in set (0.00 sec)
+
+mysql> describe orders;
++-----------+------+------+-----+---------+-------+
+| Field     | Type | Null | Key | Default | Extra |
++-----------+------+------+-----+---------+-------+
+| OrderID   | int  | NO   | PRI | NULL    |       |
+| Orderdate | date | NO   |     | NULL    |       |
+| custid    | int  | YES  | MUL | NULL    |       |
++-----------+------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> insert into orders(OrderID,Orderdate,custid)values('12','2003-12-05','1'),('22','2003-09-12','2');
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * orders;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'orders' at line 1
+mysql> select * from orders;
++---------+------------+--------+
+| OrderID | Orderdate  | custid |
++---------+------------+--------+
+|      12 | 2003-12-05 |      1 |
+|      22 | 2003-09-12 |      2 |
++---------+------------+--------+
+2 rows in set (0.00 sec)
+
+mysql> describe product;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| pid   | int         | NO   | PRI | NULL    |       |
+| pname | varchar(20) | YES  |     | NULL    |       |
+| price | int         | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> insert into product values('123','se32','2000');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into product values('124','ser32','5000');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from product;
++-----+-------+-------+
+| pid | pname | price |
++-----+-------+-------+
+| 123 | se32  |  2000 |
+| 124 | ser32 |  5000 |
++-----+-------+-------+
+2 rows in set (0.00 sec)
+
+mysql> describe orderdetails;
+ERROR 1146 (42S02): Table 'class1.orderdetails' doesn't exist
+mysql> describe orderdetail;
++----------+------+------+-----+---------+-------+
+| Field    | Type | Null | Key | Default | Extra |
++----------+------+------+-----+---------+-------+
+| did      | int  | YES  |     | NULL    |       |
+| pid      | int  | YES  | MUL | NULL    |       |
+| quantity | int  | YES  |     | NULL    |       |
+| price    | int  | YES  |     | NULL    |       |
+| OrderID  | int  | YES  | MUL | NULL    |       |
++----------+------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> insert into orderdetail('1234','123','3','2000','12');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''1234','123','3','2000','12')' at line 1
+mysql> insert into orderdetail values('1234','123','3','2000','12');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into orderdetail values('1235','124','5','5000','22');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * customer;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'customer' at line 1
+mysql> select * from customer;
++--------+-------+------------+--------+------------+
+| custid | cname | address    | city   | mobile     |
++--------+-------+------------+--------+------------+
+|      1 | ram   | 123 indore | indore | 1234567890 |
+|      2 | riya  | 123pune    | pune   | 1234567899 |
++--------+-------+------------+--------+------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from orders;
++---------+------------+--------+
+| OrderID | Orderdate  | custid |
++---------+------------+--------+
+|      12 | 2003-12-05 |      1 |
+|      22 | 2003-09-12 |      2 |
++---------+------------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select * from orderdetail;
++------+------+----------+-------+---------+
+| did  | pid  | quantity | price | OrderID |
++------+------+----------+-------+---------+
+| 1234 |  123 |        3 |  2000 |      12 |
+| 1235 |  124 |        5 |  5000 |      22 |
++------+------+----------+-------+---------+
+2 rows in set (0.00 sec)
+
+mysql> select * from product;
++-----+-------+-------+
+| pid | pname | price |
++-----+-------+-------+
+| 123 | se32  |  2000 |
+| 124 | ser32 |  5000 |
++-----+-------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select customer.cname ,Orders.OrderID from customer inner join orders on customer.custid=Orders.OrderID;
+Empty set (0.00 sec)
+
+Q . summary report  of orders with customer
+mysql> select customer.cname ,Orders.OrderID from customer inner join orders on customer.custid=Orders.custid;
++-------+---------+
+| cname | OrderID |
++-------+---------+
+| ram   |      12 |
+| riya  |      22 |
++-------+---------+
+2 rows in set (0.00 sec)
+
+Q. find the HIGHEST sold product
+mysql> select product.pid ,product.pname ,max(orderdetail.quantity) from orderdetail join product on orderdetail.pid = product.pid;
++------+-------+---------------------------+
+| pid  | pname | max(orderdetail.quantity) |
++------+-------+---------------------------+
+|  123 | se32  |                         5 |
++------+-------+---------------------------+
+1 row in set (0.00 sec)
+
+Q. find the lowest sold product
+mysql> select product.pid ,product.pname ,min(orderdetail.quantity) from orderdetail join product on orderdetail.pid = product.pid;
++------+-------+---------------------------+
+| pid  | pname | min(orderdetail.quantity) |
++------+-------+---------------------------+
+|  123 | se32  |                         3 |
++------+-------+---------------------------+
+1 row in set (0.00 sec)
+
+Q . display all product sold
+mysql> select product.pid ,orderdetail.quantity from orderdetail join product on orderdetail.pid = product.pid;
++-----+----------+
+| pid | quantity |
++-----+----------+
+| 123 |        3 |
+| 124 |        5 |
++-----+----------+
+2 rows in set (0.00 sec)
+
+mysql>
+

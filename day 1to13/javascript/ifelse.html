@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<p> click the button to display a confirm box </p>
+<button onclick="myFunction()">try</button>
+<p id="demo"></p>
+<script type="text/javascript">
+	function myFunction()
+	{
+		var x;
+		var r = confirm("press a button");
+		if (r==true)
+		 {
+		 	x="ok";
+		 }
+		 else
+		 {
+		 	x="cancel";
+         }
+         document.getElementById("demo").innerHTML=x;
+         
+
+	}
+</script>
+</body>
+</html>

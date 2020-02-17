@@ -1,0 +1,48 @@
+<html>
+<body>
+	
+
+	 <input type="text" id="first" placeholder="value1" > <br><br>
+	 <input type="text" id="second" placeholder="value2" > <br><br>
+	 <input type="text" id="third" placeholder=" value3"> <br><br>
+	 <input type="text" id="res" placeholder=" result"> <br><br>
+	 
+	<script >
+		function addition()
+		{
+		 
+             var a=parseInt(document.getElementById("first").value )
+             var b=parseInt(document.getElementById("second").value )
+             var c=parseInt(document.getElementById("third").value )
+          
+		
+			var result= a+b+c;
+			document.getElementById("res").value=result;
+
+
+		}
+		function multiplication()
+		{
+             var a=parseInt(document.getElementById("first").value )
+             var b=parseInt(document.getElementById("second").value )
+             var c=parseInt(document.getElementById("third").value )
+          
+		
+			var result= a*b*c;
+			document.getElementById("res").value=result;
+		}
+		
+
+
+	</script>
+	
+<button onClick = "addition()"> add </button>
+<button onclick="multiplication()"> multiply </button>
+<script>
+function myFunction() {
+	// body...
+	
+}
+</script>
+</body>
+</html>

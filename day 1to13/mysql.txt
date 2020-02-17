@@ -1,0 +1,283 @@
+mysql> use class1;
+Database changed
+mysql> create table parent (id int primary key , name varchar(20));
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> create table child(id int , salary int ,pid int ,foreign key (pid) references parent(id) on delete cascade);
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> insert into parent values('123','rohan');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into parent values('124','rishabh');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into child values('1234','5000','123');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into child values('1235','5000','124');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from parent;
++-----+---------+
+| id  | name    |
++-----+---------+
+| 123 | rohan   |
+| 124 | rishabh |
++-----+---------+
+2 rows in set (0.00 sec)
+
+mysql> select * from child;
++------+--------+------+
+| id   | salary | pid  |
++------+--------+------+
+| 1234 |   5000 |  123 |
+| 1235 |   5000 |  124 |
++------+--------+------+
+2 rows in set (0.00 sec)
+
+mysql> insert into parent values('125','kabir'),('126','dhruv');
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from parent;
++-----+---------+
+| id  | name    |
++-----+---------+
+| 123 | rohan   |
+| 124 | rishabh |
+| 125 | kabir   |
+| 126 | dhruv   |
++-----+---------+
+4 rows in set (0.00 sec)
+
+mysql> delete from parent where id='124';
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from parent;
++-----+-------+
+| id  | name  |
++-----+-------+
+| 123 | rohan |
+| 125 | kabir |
+| 126 | dhruv |
++-----+-------+
+3 rows in set (0.00 sec)
+
+mysql> select * from child;
++------+--------+------+
+| id   | salary | pid  |
++------+--------+------+
+| 1234 |   5000 |  123 |
++------+--------+------+
+1 row in set (0.00 sec)
+
+mysql> create table parent1 (id int primary key , name varchar(20));
+Query OK, 0 rows affected (0.13 sec)
+
+mysql> create table child1(id int , salary int ,pid int ,foreign key (pid) references parent(id));
+Query OK, 0 rows affected (0.36 sec)
+
+mysql> select * from child1;
+Empty set (0.01 sec)
+
+mysql> insert into parent1 values('125','kabir'),('126','dhruv');
+Query OK, 2 rows affected (0.02 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> insert into child1 values('1234','5000','125'),('1235','5000','126');
+Query OK, 2 rows affected (0.03 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from child1;
++------+--------+------+
+| id   | salary | pid  |
++------+--------+------+
+| 1234 |   5000 |  125 |
+| 1235 |   5000 |  126 |
++------+--------+------+
+2 rows in set (0.00 sec)
+
+mysql> select * from parent1;
++-----+-------+
+| id  | name  |
++-----+-------+
+| 125 | kabir |
+| 126 | dhruv |
++-----+-------+
+2 rows in set (0.00 sec)
+
+mysql> delete from child1 where id ='125';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from child1;
++------+--------+------+
+| id   | salary | pid  |
++------+--------+------+
+| 1234 |   5000 |  125 |
+| 1235 |   5000 |  126 |
++------+--------+------+
+2 rows in set (0.00 sec)
+
+mysql> delete from child1 where id ='1234';
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from child1;
++------+--------+------+
+| id   | salary | pid  |
++------+--------+------+
+| 1235 |   5000 |  126 |
++------+--------+------+
+1 row in set (0.00 sec)
+
+mysql> select * from parent1;
++-----+-------+
+| id  | name  |
++-----+-------+
+| 125 | kabir |
+| 126 | dhruv |
++-----+-------+
+2 rows in set (0.00 sec)
+
+mysql> insert into child1 values('1235','5000','126');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from child1;
++------+--------+------+
+| id   | salary | pid  |
++------+--------+------+
+| 1235 |   5000 |  126 |
+| 1235 |   5000 |  126 |
++------+--------+------+
+2 rows in set (0.00 sec)
+
+mysql> delete from parent1 where id ='125';
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from child1;
++------+--------+------+
+| id   | salary | pid  |
++------+--------+------+
+| 1235 |   5000 |  126 |
+| 1235 |   5000 |  126 |
++------+--------+------+
+2 rows in set (0.00 sec)
+
+mysql> select * from child1;
++------+--------+------+
+| id   | salary | pid  |
++------+--------+------+
+| 1235 |   5000 |  126 |
+| 1235 |   5000 |  126 |
++------+--------+------+
+2 rows in set (0.00 sec)
+
+mysql> select * from child;
++------+--------+------+
+| id   | salary | pid  |
++------+--------+------+
+| 1234 |   5000 |  123 |
++------+--------+------+
+1 row in set (0.02 sec)
+
+mysql> select * from parent;
++-----+-------+
+| id  | name  |
++-----+-------+
+| 123 | rohan |
+| 125 | kabir |
+| 126 | dhruv |
++-----+-------+
+3 rows in set (0.00 sec)
+
+mysql> delete from child where id ='123';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from parent;
++-----+-------+
+| id  | name  |
++-----+-------+
+| 123 | rohan |
+| 125 | kabir |
+| 126 | dhruv |
++-----+-------+
+3 rows in set (0.00 sec)
+
+mysql> insert into child values('1235','5000','126');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into child values('1236','5000','123');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from child;
++------+--------+------+
+| id   | salary | pid  |
++------+--------+------+
+| 1234 |   5000 |  123 |
+| 1235 |   5000 |  126 |
+| 1236 |   5000 |  123 |
++------+--------+------+
+3 rows in set (0.00 sec)
+
+mysql> update parent set id='128' where name='rohan';
+ERROR 1451 (23000): Cannot delete or update a parent row: a foreign key constraint fails (`class1`.`child`, CONSTRAINT `child_ibfk_1` FOREIGN KEY (`pid`) REFERENCES `parent` (`id`) ON DELETE CASCADE)
+mysql>
+mysql> select id*pid quantity as 'total' from child;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'as 'total' from child' at line 1
+mysql> alter table child add no int;
+Query OK, 0 rows affected (0.13 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> update child set no = '2' where id='1234';
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update child set no = '3' where id='1235';
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update child set no = '3' where id='1236';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select salary*no as 'total' from child;
++-------+
+| total |
++-------+
+| 10000 |
+| 15000 |
+| 15000 |
++-------+
+3 rows in set (0.00 sec)
+
+mysql> select *from child where no>2;
++------+--------+------+------+
+| id   | salary | pid  | no   |
++------+--------+------+------+
+| 1235 |   5000 |  126 |    3 |
+| 1236 |   5000 |  123 |    3 |
++------+--------+------+------+
+2 rows in set (0.00 sec)
+
+mysql> insert into table values('1238','8000','144','6');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table values('1238','8000','144','6')' at line 1
+mysql> insert into child values('1238','8000','144','6');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`class1`.`child`, CONSTRAINT `child_ibfk_1` FOREIGN KEY (`pid`) REFERENCES `parent` (`id`) ON DELETE CASCADE)
+mysql> insert into child values('1230','8000','120','6');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`class1`.`child`, CONSTRAINT `child_ibfk_1` FOREIGN KEY (`pid`) REFERENCES `parent` (`id`) ON DELETE CASCADE)
+mysql> select * from child where id<'3' and salary<'5000';
+Empty set (0.00 sec)
+
+mysql> select * from child where id<'3' and salary<='5000';
+Empty set (0.00 sec)
+
+mysql> select * from child where id<='3' and salary<='5000';
+Empty set (0.00 sec)
+
+mysql> select * from child where id<='2' and salary<='5000';
+Empty set (0.00 sec)
+
+mysql> select * from child where id<='2' and salary='5000';
+Empty set (0.00 sec)
+
+mysql>

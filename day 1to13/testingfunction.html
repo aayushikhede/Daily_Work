@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>testing function</title>
+<script type="text/javascript">
+	function myfun()
+{
+	var birth = new Date('10,02,2001');
+     var currentDate = new Date();
+     var cyr =parseInt(currentDate.getFullYear());
+     var byr= parseInt(birth.getFullYear());
+     var x = cyr-byr;
+     document.write("current date and time :"+x);
+}
+</script>
+</head>
+<body>
+<button onclick="myfun()">click</button>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+
+	var numbers= [45,4,9,16,25];
+	document.write(Math.random()+"<br>");
+	document.write(Math.floor(Math.random()*10)+"<br>");  //output will be random integer from 0 to 9
+	document.write(Math.floor(Math.random()*11)+"<br>");  //output will be random integer from 0 to 10
+	document.write(Math.floor(Math.random()*100)+"<br>");  //output will be random integer from 0 to 99
+
+
+
+function myFunction (value)
+{
+	return value*2;
+
+}   
+    var numbers2=numbers.map(myFunction);
+	document.write("Result:"+numbers2 +"<br>");
+
+function myFilterFun (value)
+{
+	return value>18;
+}
+    var numbers2=numbers.map(myFilterFun);
+	document.write("Result:"+numbers2+"<br>");
+
+function maketotol(total,value)
+{
+	return total+value;
+}
+
+    var numbers2=numbers.map(maketotol);
+	document.write("Result:"+numbers2+"<br>");
+
+function  popEx()
+{
+	return numbers.pop()
+}
+   var numbers2= numbers.pop(popEx);
+   document.write("Result:"+numbers2+"<br>");
+
+function  pushEx()
+{
+	return numbers.push("100")
+}
+   var numbers2= numbers.push(pushEx);
+   document.write("Result:"+numbers2+"<br>");
+
+   
+
+</script>
+</body>
+</html>

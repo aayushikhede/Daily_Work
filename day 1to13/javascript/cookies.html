@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<p> click here for propt </p>
+	<button onclick="myFunction()"> click here </button>
+	<p id="demo"></p>
+	<script type="text/javascript">
+		function myFunction()
+		{
+			var x;
+			var person = prompt("please enter your name","harry styles");
+			if (person!=null) {
+				x= "hello"+ person+"how are you today";
+				document.getElementById('demo').innerHTML=x;
+
+			}
+		}
+	</script>
+
+</body>
+</html>
