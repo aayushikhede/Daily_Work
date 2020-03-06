@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+	<!--  <servlet>
+		<servlet-name>SourceServlet</servlet-name>
+		<servlet-class>com.cts.training.SourceServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SourceServlet</servlet-name>
+		<url-pattern>/ss</url-pattern>
+	</servlet-mapping>
+	-->
+	
+	<servlet>
+		<servlet-name>Servlet2</servlet-name>
+		<servlet-class>com.cts.training.Servlet2</servlet-class>
+	
+	<init-param>
+		<param-name>userName</param-name>
+		<param-value>root</param-value>
+		</init-param>
+		
+		<init-param>
+		<param-name>password</param-name>
+		<param-value>root</param-value>
+		</init-param>
+		
+		<init-param>
+		<param-name>url</param-name>
+		<param-value>jdbc:mysql://localhost:3306/servlet</param-value>
+		</init-param>
+		
+		<init-param>
+		<param-name>driver</param-name>
+		<param-value>com.mysql.cj.jdbc.Driver</param-value>
+		</init-param>
+			
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Servlet2 </servlet-name>
+		<url-pattern>/cs1</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>LogInServlet</servlet-name>
+		<servlet-class>com.cts.training.LogInServlet</servlet-class>
+		
+		<init-param>
+		<param-name>userName</param-name>
+		<param-value>root</param-value>
+		</init-param>
+		
+		<init-param>
+		<param-name>password</param-name>
+		<param-value>root</param-value>
+		</init-param>
+		
+		<init-param>
+		<param-name>url</param-name>
+		<param-value>jdbc:mysql://localhost:3306/servlet</param-value>
+		</init-param>
+		
+		<init-param>
+		<param-name>driver</param-name>
+		<param-value>com.mysql.cj.jdbc.Driver</param-value>
+		</init-param>
+			
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>LogInServlet</servlet-name>
+		<url-pattern>/cs</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+</web-app>
